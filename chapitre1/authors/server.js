@@ -5,9 +5,9 @@ const app = express();
 
 // console.log('hallo !');
 
-// app.listen(port, () => {
-//     console.log(`server has started :` + port);
-// });
+app.listen(port, () => {
+    console.log(`server has started :` + port);
+});
 var authors = [
     {
         name: "Lawrence Nowell",
@@ -31,9 +31,9 @@ var authors = [
     },
 ]
 // console.log(authors);
-// app.get('/', (req, res) => {
-//     res.send(authors);
-//   });
+app.get('/', (req, res) => {
+    res.send(authors);
+});
 
 
 // app.get('/authors/:id', (req, res) => {
@@ -76,26 +76,36 @@ var authors = [
 
 /*         exo 3            */
 
-app.get('/authors/:id/books/', (req, res) => {
-    let id = req.params.id-1;
-    var bookArray = authors[id].books;
-    var string = "";
-    // for (let i = 0; i < bookArray.length; i++) {
-    //     string += ` ${bookArray[i]} `;
-    // }
-    let i = 0;
-    while (i < bookArray.length) {
-        string += ` ${bookArray[i]} `;
-        i++
-    }
-    
-    res.send(`${string}`);
-})
-app.listen(port, () => {
-    console.log(`Server started on port: ${port}`);
-});
+// app.get('/authors/:id/books/', (req, res) => {
+//     let id = req.params.id - 1;
+//     var bookArray = authors[id].books;
+//     var string = "";
+//     // for (let i = 0; i < bookArray.length; i++) {
+//     //     string += ` ${bookArray[i]} `;
+//     // }
+//     let i = 0;
+//     while (i < bookArray.length) {
+//         string += ` ${bookArray[i]} `;
+//         i++
+//     }
+
+//     res.send(`${string}`);
+// })
+// app.listen(port, () => {
+//     console.log(`Server started on port: ${port}`);
+// });
 
 
 /*    exo 4    */
 
-
+app.get('/json/authors/:id', (req, res) => {
+    let id = req.params.id - 1;
+    var nameArray = authors[id].name;
+    var nationArray = authors[id].nationality;
+    res.json({ name: nameArray, nationality: nationArray });
+})
+app.get('/json/authors/:id/books', (req, res) => {
+    let id = req.params.id - 1;
+    var booksArray = authors[id].books;
+    res.json({ books: booksArray });
+})
