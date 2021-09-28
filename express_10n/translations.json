@@ -1,0 +1,17 @@
+{
+    "fr": {
+        "pageTitle": "Bonjour",
+        "title": "Ca va ?",
+        "image": "./img/france.png"
+    },
+    "en": {
+        "pageTitle": "Hello",
+        "title": "How are you",
+        "image": "./img/anglais.png"
+    },
+    "es": {
+        "pageTitle": "Hola",
+        "title": "Que tal ?",
+        "image": "./img/spain.png"
+    }
+}
